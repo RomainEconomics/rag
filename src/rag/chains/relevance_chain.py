@@ -76,6 +76,9 @@ class RelevanceChain(AbstractChainBuilder):
                 raw_source_documents=lambda inputs: inputs["source_documents"]
             )
             | RunnablePassthrough.assign(source_documents=_filter_relevant_docs)
+            | RunnablePassthrough.assign(
+                context=lambda inputs: self._format_docs(inputs["source_documents"])
+            )
         )
 
     @property
@@ -90,3 +93,9 @@ class RelevanceChain(AbstractChainBuilder):
 
                 Relevant or not:
                 """
+
+    def _format_docs(self, docs):
+        s = ""
+        for doc in docs:
+            s += f"filename: {doc.metadata['filename']}; page: {doc.metadata['page']}\n{doc.page_content}\n\n"
+        return s
