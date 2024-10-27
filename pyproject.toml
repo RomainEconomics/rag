@@ -1,0 +1,23 @@
+[project]
+name = "rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "jupyterlab>=4.2.5",
+  "langchain>=0.3.4",
+  "langchain-anthropic>=0.2.3",
+  "langchain-community>=0.3.3",
+  "langchain-openai>=0.2.3",
+  "openai>=1.52.0",
+  "pypdf>=5.0.1",
+  "rich>=13.9.2",
+  "weaviate-client>=4.9.0",
+  "langchain-weaviate>=0.0.3",
+  "pymupdf>=1.24.12",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
